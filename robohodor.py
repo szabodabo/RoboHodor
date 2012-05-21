@@ -8,6 +8,15 @@ def tryCommentReply(comment, replyText):
 	punc = choice(appends)
 
 	realReplyText = str(replyText) + str(punc)
+	
+	spoilerChoices = [0, 0, 1, 2]
+	spoilerChoice = choice(spoilerChoices)
+	if spoilerChoice is 0:
+		pass
+	elif spoilerChoice is 1:
+		realReplyText = '[Spoiler](/s "' + str(realReplyText) + '")'
+	elif spoilerChoice is 2:
+		realReplyText = '[Spoiler](/b "' + str(realReplyText) + '")'
 
 	try:
 		comment.reply(realReplyText)
