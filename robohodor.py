@@ -21,6 +21,7 @@ def tryCommentReply(comment, replyText):
 	try:
 		comment.reply(realReplyText)
 	except reddit.errors.RateLimitExceeded as RLE:
+		print RLE
 		exit()
 	time.sleep(2)
 
