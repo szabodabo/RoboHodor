@@ -23,11 +23,13 @@ def tryCommentReply(comment, replyText):
 
 	try:
 		comment.reply(realReplyText)
+		time.sleep(2)
 	except reddit.errors.RateLimitExceeded as RLE:
 		print RLE
 		print getCurrentTime()
-		exit()
-	time.sleep(2)
+		for t in range(10 + 1):
+			print "Waiting for " + str(t) + " more minutes..."
+			time.sleep(60 * t)	
 
 def trollCommentThread(comment):
 	#print '  ' + str(comment.body)
@@ -91,13 +93,15 @@ def trollCollection(commentCollection):
 		else:
 			trollCommentThread(comment)
 
-api = reddit.Reddit(user_agent='ROBOHODOR')
+while True:
+	api = reddit.Reddit(user_agent='ROBOHODOR')
 
-api.login('ROBOHODOR', 'hodorhodor')
+	api.login('ROBOHODOR', 'hodorhodor')
 
-topposts = list(api.get_subreddit('gameofthrones').get_top(50))
+	topposts = list(api.get_subreddit('gameofthrones').get_top(50))
 
-for submission in topposts:
-	title = submission.title.lower()
-	print str(title)
-	trollCollection(submission.comments)
+	for submission in topposts:
+		title = submission.title.lower()
+		print str(title)
+		trollCollection(submission.comments)
+
