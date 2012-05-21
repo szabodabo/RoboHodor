@@ -19,7 +19,7 @@ def parse_time(time_str):
     return timedelta(**time_params)
 
 def tryCommentReply(comment, replyText):
-	appends = ['!', '?', '...', '~']
+	appends = ['!', '?', '...', '']
 	punc = choice(appends)
 
 	realReplyText = str(replyText) + str(punc)
