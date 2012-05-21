@@ -59,8 +59,8 @@ def alreadyReplied(comment):
 
 def checkRepliesForMyReply(someReplies):
 	for reply in someReplies:
-		if isinstance(comment, reddit.objects.MoreComments):
-			moar = comment.comments()
+		if isinstance(reply, reddit.objects.MoreComments):
+			moar = reply.comments()
 			return checkRepliesForMyReply(moar)
 		if isMyComment(reply):
 			return True
