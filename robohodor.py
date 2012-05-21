@@ -86,8 +86,11 @@ def shouldReply(comment):
 def trollCollection(commentCollection):
 	for comment in commentCollection:
 		if isinstance(comment, reddit.objects.MoreComments):
-			moar = comment.comments()
-			trollCollection(moar)
+			try:
+				moar = comment.comments()
+				trollCollection(moar)
+			except KeyError:
+				continue
 		else:
 			trollCommentThread(comment)
 
