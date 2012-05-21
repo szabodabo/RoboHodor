@@ -1,22 +1,7 @@
 
 import reddit
 import time
-import re
-from datetime import timedelta
 from random import choice
-
-regex = re.compile(r'((?P<hours>\d+?) hours)?((?P<minutes>\d+?) minutes)?((?P<seconds>\d+?) seconds)?')
-
-def parse_time(time_str):
-    parts = regex.match(time_str)
-    if not parts:
-        return
-    parts = parts.groupdict()
-    time_params = {}
-    for (name, param) in parts.iteritems():
-        if param:
-            time_params[name] = int(param)
-    return timedelta(**time_params)
 
 def tryCommentReply(comment, replyText):
 	appends = ['!', '?', '...', '']
@@ -27,12 +12,6 @@ def tryCommentReply(comment, replyText):
 	try:
 		comment.reply(realReplyText)
 	except reddit.errors.RateLimitExceeded as RLE:
-		stringRep = str(RLE)
-		print "Caught RLE:"
-		print stringRep
-		frontGone = stringRep[44:]
-		backGone = frontGone[:-24]
-		print backGone
 		exit()
 	time.sleep(2)
 
