@@ -30,7 +30,7 @@ def tryCommentReply(comment, replyText):
 		for t in range(10 + 1):
 			print "Waiting for " + str(10 - t) + " more minutes..."
 			time.sleep(60)	
-		sleep(2)
+		time.sleep(2)
 		tryCommentReply(comment, replyText)
 
 def trollCommentThread(comment):
