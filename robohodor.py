@@ -3,6 +3,9 @@ import reddit
 import time
 from random import choice
 
+def getCurrentTime():
+	return time.strftime('%X %x %Z')
+
 def tryCommentReply(comment, replyText):
 	appends = ['!', '?', '...', '']
 	punc = choice(appends)
@@ -22,6 +25,7 @@ def tryCommentReply(comment, replyText):
 		comment.reply(realReplyText)
 	except reddit.errors.RateLimitExceeded as RLE:
 		print RLE
+		print getCurrentTime()
 		exit()
 	time.sleep(2)
 
