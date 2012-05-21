@@ -28,8 +28,8 @@ def tryCommentReply(comment, replyText):
 		print RLE
 		print getCurrentTime()
 		for t in range(10 + 1):
-			print "Waiting for " + str(t) + " more minutes..."
-			time.sleep(60 * t)	
+			print "Waiting for " + str(10 - t) + " more minutes..."
+			time.sleep(60)	
 
 def trollCommentThread(comment):
 	#print '  ' + str(comment.body)
