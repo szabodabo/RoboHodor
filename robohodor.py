@@ -55,12 +55,16 @@ def isMyComment(comment):
 		return False
 
 def alreadyReplied(comment):
-	alreadyRepliedFlag = False
-	for reply in comment.replies:
+	return checkRepliesForMyReply(comment.replies)		
+
+def checkRepliesForMyReply(someReplies):
+	for reply in someReplies:
+		if isinstance(comment, reddit.objects.MoreComments):
+			moar = comment.comments()
+			return checkRepliesForMyReply(moar)
 		if isMyComment(reply):
-			alreadyRepliedFlag = True
-	return alreadyRepliedFlag
-		
+			return True
+	return False
 
 def shouldReply(comment):
 	#Reply if a comment contains HODOR and I haven't already replied to it
