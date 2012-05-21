@@ -74,6 +74,7 @@ def shouldReply(comment):
 			return False
 		else:
 			#Someone else wrote this comment
+			comment.upvote()
 			#Have I already replied?
 			if alreadyReplied(comment):
 				return False
